@@ -1,0 +1,10 @@
+#link: https://platform.stratascratch.com/coding/9917-average-salaries?code_type=1
+
+import pandas as pd
+employee = pd.DataFrame(data)
+department_avg_salary = employee.groupby('department')['salary'].mean().reset_index()
+department_avg_salary.rename(columns={'salary': 'avg_salary'}, inplace=True)
+result = pd.merge(employee, department_avg_salary, on='department')
+result = result[['department', 'first_name', 'salary', 'avg_salary']]
+
+print(result)
